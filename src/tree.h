@@ -5,9 +5,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#define true 1;
-#define false 0;
-
 typedef struct ax {
     int key;
     struct ax * left, * right;
@@ -66,6 +63,32 @@ void inorder(Node * root) {
     if (root->right != NULL) {
         inorder(root->right);
     }
+}
+
+/**
+ * Function: height
+ * -----------------
+ * Função para calcular a altura de uma árvore binária. A altura 
+ * 
+ * root: Ponteiro para o Node que representa a raiz do projeto
+ * 
+ * returns: Inteiro representando a altura da árvore binária
+ * 
+ */
+int height(Node * root) {
+    int hleft = 0;
+    int hright = 0;
+
+    if (root->left != NULL) {
+        hleft = height(root->left);
+    }
+
+    if (root->right != NULL) {
+        hright = height(root->right);
+    }
+
+    if (hright > hleft) return hright + 1;
+    return hleft + 1;
 }
 
 int count(Node * root, int (*fncp)(Node *)) {
