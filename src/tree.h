@@ -1,10 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
 
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-
 typedef struct ax {
     int key;
     struct ax * left, * right;
@@ -13,11 +9,11 @@ typedef struct ax {
 /**
  * Function: tree
  * -----------------
- * Função para criar um nó raiz (Separação apenas semântica)
+ * Function for Creating a Root Node (Semantic Separation Only)
  * 
- * key: Valor inserido no nó criado
+ * key: Value entered on created node
  * 
- * returns: Nó criado
+ * returns: Created node
  */
 Node * tree(int key) {
     Node * tmp = (Node *) malloc(sizeof(Node));
@@ -29,11 +25,11 @@ Node * tree(int key) {
 /**
  * Function: node
  * -----------------
- * Função para criar um nó na árvore
+ * Function to create a tree node
  * 
- * key: Valor inserido no nó criado
+ * key: Value entered on created node
  * 
- * returns: Nó criado
+ * returns: Created node
  */
 Node * node(int key) {
     Node * tmp = (Node *) malloc(sizeof(Node));
@@ -45,12 +41,12 @@ Node * node(int key) {
 /**
  * Function: insert
  * -----------------
- * Função para inserir um nó na árvore binária
+ * Function to insert a node in binary tree
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
- * newNode: Ponteiro para o novo nó que será inserido
+ * root: Pointer to node representing tree root
+ * newNode: Pointer to the new node that will be inserted
  * 
- * returns: Devolve o nó inserido na árvore
+ * returns: Returns the node inserted in the tree.
  */
 Node * insert(Node * root, Node * newNode) {
     if (root == NULL) return(newNode);
@@ -65,12 +61,12 @@ Node * insert(Node * root, Node * newNode) {
 /**
  * Function: search
  * -----------------
- * Função para realizar pesquisa em uma árvore binária
+ * Function to perform search in a binary tree. Pre-order sweep operation is considered
  * 
- * element: Número inteiro pesquisado na árvore binária
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * element: Integer searched in binary tree
+ * root: Pointer to node representing tree root
  * 
- * returns: Nó com o elemento encontrado, caso não encontre retorna NULL.
+ * returns: Node with the found element, if not found returns NULL.
  */
 Node * search(int element, Node * root) {
     if (root == NULL) return NULL;
@@ -83,10 +79,9 @@ Node * search(int element, Node * root) {
 /**
  * Function: preorder
  * -----------------
- * Função para visualizar uma árvore binária, fazendo o percurso de exibição 
- * em pré-ordem
+ * Function to view a binary tree, making the display path in preorder
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
  * returns: void
  */
@@ -105,10 +100,9 @@ void preorder(Node * root) {
 /**
  * Function: inorder
  * -----------------
- * Função para visualizar uma árvore binária, fazendo o percurso de exibição 
- * em ordem simétrica (in-ordem)
+ * Function to view a binary tree, making the display path in symmetrical order (in-order)
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
  * returns: void
  * 
@@ -127,13 +121,14 @@ void inorder(Node * root) {
 /**
  * Function: height
  * -----------------
- * Função para calcular a altura de uma árvore binária. A altura da árvore
- * é apresentada pelo nó de nível máximo, onde o nível representa a distância
- * entre o nó e a raiz.
+ * Function to calculate the height of a binary tree. 
+ * The tree height is displayed by the maximum level node, 
+ * where the level represents the distance between the node and the root.
+ * Pos-order sweep operation is considered
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
- * returns: Inteiro representando a altura da árvore binária
+ * returns: Integer representing the height of the binary tree
  * 
  */
 int height(Node * root) {
@@ -155,14 +150,14 @@ int height(Node * root) {
 /**
  * Function: count
  * -----------------
- * Função para contar a quantidade de nós em uma árvore
+ * Function to count the number of nodes in a tree
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
- * fncp: Ponteiro para uma função que recebe um nó e devolve um valor inteiro.
- * Esta função será utilizada para realizar o cálculo. Funções como by_preorder, 
- * by_inorder ou by_posorder podem ser aplicadas neste contexto.
+ * root: Pointer to node representing tree root
+ * fncp: Pointer to a function that takes a node and returns an integer value. 
+ * This function will be used to perform the calculation. 
+ * Functions such as by_preorder, by_inorder or by_posorder can be applied in this context.
  * 
- * returns: Inteiro representando a quantidade de nós na árvore
+ * returns: Integer representing the number of nodes in the tree
  * 
  */
 int count(Node * root, int (*fncp)(Node *)) {
@@ -172,12 +167,12 @@ int count(Node * root, int (*fncp)(Node *)) {
 /**
  * Function: by_preorder
  * -----------------------
- * Função auxiliar para a contagem de elementos em uma árvore binária qualquer.
- * Utiliza o método pré-ordem para percorrer a árvore
+ * Helper function for counting elements in any binary tree. 
+ * Uses the preorder method to sweep the tree
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
- * returns: Inteiro representando a quantidade de nós na árvore
+ * returns: Integer representing the number of nodes in the tree
  * 
  */
 int by_preorder(Node * root) {
@@ -191,12 +186,12 @@ int by_preorder(Node * root) {
 /**
  * Function: by_inorder
  * ----------------------
- * Função auxiliar para a contagem de elementos em uma árvore binária qualquer.
- * Utiliza o método in-ordem (Simétrica) para percorrer a árvore
+ * Helper function for counting elements in any binary tree. 
+ * Uses in-order (symmetric) method to sweep tree
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
- * returns: Inteiro representando a quantidade de nós na árvore
+ * returns: Integer representing the number of nodes in the tree
  */
 int by_inorder(Node * root) {
     if (!root) return 0;
@@ -209,12 +204,12 @@ int by_inorder(Node * root) {
 /**
  * Function: by_posorder
  * ----------------------
- * Função auxiliar para a contagem de elementos em uma árvore binária qualquer.
- * Utiliza o método pós-ordem (depth-first) para percorrer a árvore
+ * Helper function for counting elements in any binary tree. 
+ * Uses depth-first method to sweep tree
  * 
- * root: Ponteiro para o Node que representa a raiz da árvore
+ * root: Pointer to node representing tree root
  * 
- * returns: Inteiro representando a quantidade de nós na árvore
+ * returns: Integer representing the number of nodes in the tree
  */
 int by_posorder(Node * root) {
     if (!root) return 0;
