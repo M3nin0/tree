@@ -119,6 +119,28 @@ void inorder(Node * root) {
 }
 
 /**
+ * Function: posorder
+ * -----------------
+ * Function to view a binary tree, making the display path in pos-order
+ * 
+ * root: Pointer to node representing tree root
+ * 
+ * returns: void
+ * 
+ */
+void posorder(Node * root) {
+    if (root->left != NULL) {
+        inorder(root->left);
+    }
+
+    if (root->right != NULL) {
+        inorder(root->right);
+    }
+
+    printf("%d\n", root->key);
+}
+
+/**
  * Function: height
  * -----------------
  * Function to calculate the height of a binary tree. 
